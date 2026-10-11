@@ -42,12 +42,12 @@ Then open:
 
 ## Deploy to Vercel
 
-This repository serves the static frontend from `frontend/` and exposes a health endpoint at `/api/health`.
+This repository serves the static frontend from `frontend/` and exposes a health endpoint at `/api/health`. The Vercel project root must be the repository root (`.`), not the `frontend` or `backend` directory.
 
 ### Deploy from GitHub
 1. Import `kartiksh1526-cloud/invoice` in the Vercel dashboard.
 2. Keep the project root directory as `.` and the framework preset as **Other**.
-3. Leave the build and install commands empty; `vercel.json` configures the static files and API route.
+3. Set the Output Directory to `frontend` (or let `vercel.json` apply it); leave the build and install commands empty.
 4. Deploy. The site opens at `/`, and the health endpoint is available at `/api/health`.
 
 You can also deploy from the repository root with the Vercel CLI:

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Create Quotation | JK Quotation</title><link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/quotation.css"></head>
+<body><header class="topbar"><div><b>JK HYDRAULIC & ENGINEERING</b><span>Quotation Editor</span></div>
+<nav><a href="dashboard.html">Dashboard</a><a href="history.html">History</a><button id="logoutBtn" class="btn ghost">Logout</button></nav></header>
+<main class="container"><div class="page-head"><div><h1 id="editorTitle">New Quotation</h1><p>Fill customer and item details.</p></div><div class="actions"><button id="saveBtn" class="btn secondary">Save Draft</button><button id="previewBtn" class="btn primary">Preview</button></div></div>
+<form id="quotationForm">
+<section class="panel"><h2>Quotation Details</h2><div class="grid four">
+<label>Quotation No.<input id="quoteNo" readonly></label><label>Date<input id="quoteDate" type="date"></label>
+<label>Valid Until<input id="validUntil" type="date"></label><label>Reference<input id="reference" placeholder="Customer reference"></label></div></section>
+<section class="panel"><h2>Customer Details</h2><div class="grid two">
+<label>Customer / Company Name<input id="customerName" required></label><label>Contact Person<input id="contactPerson"></label>
+<label>Email<input id="customerEmail" type="email"></label><label>Phone<input id="customerPhone"></label>
+<label class="full">Billing / Site Address<textarea id="customerAddress" rows="3"></textarea></label></div></section>
+<section class="panel"><div class="panel-head"><h2>Items / Services</h2><button type="button" id="addItem" class="btn secondary">+ Add Item</button></div>
+<div class="table-wrap"><table class="items-table"><thead><tr><th>#</th><th>Description</th><th>Qty</th><th>Unit</th><th>Rate</th><th>Amount</th><th></th></tr></thead><tbody id="itemsBody"></tbody></table></div></section>
+<section class="panel"><div class="grid two"><div><h2>Terms & Conditions</h2><textarea id="terms" rows="8">1. Prices are valid for the period mentioned above.
+2. GST will be charged as applicable.
+3. Delivery schedule will be confirmed with the order.
+4. Payment terms: 50% advance and balance as mutually agreed.
+5. Warranty, if applicable, will be as per product/service terms.</textarea></div>
+<div class="summary"><div><span>Subtotal</span><strong id="subtotal">₹0.00</strong></div><label>Discount (%)<input id="discount" type="number" min="0" step="0.01" value="0"></label>
+<label>GST (%)<input id="gst" type="number" min="0" step="0.01" value="18"></label><div><span>Taxable Amount</span><strong id="taxable">₹0.00</strong></div><div><span>GST Amount</span><strong id="gstAmount">₹0.00</strong></div><div class="grand"><span>Grand Total</span><strong id="grandTotal">₹0.00</strong></div></div></div></section>
+</form></main><script src="js/auth.js"></script><script src="js/quotation.js"></script></body></html>

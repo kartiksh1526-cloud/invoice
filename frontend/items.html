@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>My Items | JK Quotation</title>
+<link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/items.css">
+</head>
+<body>
+<header class="topbar"><div><b>JK HYDRAULIC & ENGINEERING</b><span>Product Catalog</span></div>
+<nav><a href="dashboard.html">Dashboard</a><a href="history.html">History</a><a class="active" href="items.html">My Items</a><div class="nav-actions"><button id="themeToggle" class="theme-toggle" type="button" aria-label="Switch to dark mode">🌙 Dark</button></div></nav>
+</header>
+<main class="container">
+<div class="page-head"><div><h1>My Items</h1><p>Manage products, categories and future invoice prices.</p></div><button id="newItemBtn" class="btn primary" type="button">+ Add New Item</button></div>
+<section id="productFormPanel" class="panel" hidden>
+<div class="panel-head"><h2 id="formTitle">Add New Item</h2><button id="cancelFormBtn" class="btn secondary" type="button">Cancel</button></div>
+<form id="productForm" class="grid four">
+<input id="productId" type="hidden">
+<label class="full">Product Name<input id="productName" maxlength="240" required></label>
+<label>Category<select id="productCategory" required></select></label>
+<label>Unit<input id="productUnit" maxlength="40" placeholder="e.g. Nos, Litre"></label>
+<label>Selling Price<input id="productPrice" type="number" min="0" step="0.01" placeholder="Not set"></label>
+<label>GST Rate (%)<input id="productGst" type="number" min="0" max="100" step="0.01" placeholder="Not set"></label>
+<label>HSN/SAC Code<input id="productHsn" maxlength="40"></label>
+<label class="full">Description<textarea id="productDescription" maxlength="2000" rows="3"></textarea></label>
+<div class="form-actions full"><span id="formError" class="error-message" role="alert"></span><button class="btn primary" type="submit">Save Item</button></div>
+</form>
+</section>
+<section class="panel">
+<div class="search-row"><input id="productSearch" type="search" placeholder="Search product name"><select id="categoryFilter"><option value="">All categories</option></select></div>
+<div id="catalogStatus" class="catalog-status" role="status"></div>
+<div id="productList" class="table-wrap"></div>
+</section>
+</main>
+<script src="js/theme.js"></script><script src="js/catalog.js"></script><script src="js/items.js"></script>
+</body>
+</html>

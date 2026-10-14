@@ -1,82 +1,37 @@
 # JK Quotation System
 
-Private quotation generator and editor for **JK Hydraulic & Engineering**.
+Quotation management for **JK Hydraulic & Engineering**, with a browser-stored product catalog.
 
-## Included
-- Private demo login
-- Dashboard
-- Create/Edit quotation
-- Multiple line items
-- Automatic amount, discount, GST and grand total calculations
-- Save Draft
-- Quotation history
-- Search/filter
-- Duplicate/Delete
-- Preview
-- Print / Save as PDF
-- Word-compatible document export
-- Responsive UI
-- Express backend starter
+## Product catalog
 
-## Demo login
-Username: `admin`
-Password: `admin123`
+- The first visit to **My Items** or the invoice editor adds the 36 built-in products to browser storage.
+- Catalog initialization is repeatable: saved product details are not overwritten.
+- Catalog fields include product name, category, unit, selling price, GST rate, HSN/SAC code and description. Price, GST and HSN/SAC are intentionally blank until configured.
+- **My Items** supports search, category filtering, add/edit/delete, and a quick Edit Price action.
+- Invoice item search matches product names. Selecting an item fills its saved description, unit, configured price, GST and HSN/SAC. Invoice-specific changes do not update the catalog.
+- Item discounts and per-item GST are calculated into taxable amounts, tax and the invoice total. A blank rate or tax is treated as zero until entered.
+- Existing quotation drafts, history, print/PDF and Word-compatible downloads continue to use the browser’s saved quotation data.
 
-> This login is a frontend demo only. Before production use, replace it with secure server-side authentication.
+## Storage
 
-## Run with VS Code
+Products and quotations are saved in this browser's `localStorage`; no database connection or product API is used. Data does not automatically sync between browsers or devices. Clearing this browser's site data can remove the catalog and saved quotations.
 
-### Option 1 - Simple
-Open `frontend/login.html` with Live Server.
+## Run locally
 
-### Option 2 - Node/Express
-Open terminal in `backend`:
+Use Node.js 20 or newer:
 
 ```bash
 npm install
 npm start
 ```
 
-Then open:
-`http://localhost:3000`
+Open `http://localhost:3000`. The dashboard opens directly, without login. You can also open the frontend with a static file server; product catalog functions run in the browser.
 
 ## Deploy to Vercel
 
-This repository serves the static frontend from `frontend/` and exposes a health endpoint at `/api/health`. The Vercel project root must be the repository root (`.`), not the `frontend` or `backend` directory.
+1. Import `kartiksh1526-cloud/invoice` with the repository root (`.`) as the project root and **Other** as the framework preset.
+2. Keep the configured output directory as `frontend` (as set in `vercel.json`).
+3. Deploy the static site.
+4. Open **My Items** to edit the 36 preloaded products, or add your own items.
 
-### Deploy from GitHub
-1. Import `kartiksh1526-cloud/invoice` in the Vercel dashboard.
-2. Keep the project root directory as `.` and the framework preset as **Other**.
-3. Set the Output Directory to `frontend` (or let `vercel.json` apply it); leave the build and install commands empty.
-4. Deploy. The site opens at `/`, and the health endpoint is available at `/api/health`.
-
-You can also deploy from the repository root with the Vercel CLI:
-
-```bash
-npx vercel login
-npx vercel
-npx vercel --prod
-```
-
-## Important limitations
-- Quotations and theme preference are stored in the current browser's `localStorage`; they are not shared between browsers or devices and are not backed up to a server.
-- The included login is a demo-only client-side check, not production authentication. Do not use it to protect real or sensitive business data.
-
-## Data
-Version 1 stores quotations in the browser's localStorage so it works immediately without a database.
-
-For production, add:
-- Server-side authentication
-- MongoDB/MySQL/PostgreSQL
-- Secure sessions/JWT
-- Cloud file storage
-- Real `.docx` generation
-- Server-side PDF generation
-- User roles and audit log
-- AI API integration
-
-## Company details
-JK HYDRAULIC & ENGINEERING
-CSC Shop No. 7 & 8, F-Block, F-31, Phase-II, Mayapuri, New Delhi-110064
-Phone: 9136661641 / 9643154611
-Email: jkhydraulicandengineering@gmail.com
+Catalog and quotation data are stored only in browser `localStorage`; they are not synchronized between devices.
